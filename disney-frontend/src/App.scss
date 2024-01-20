@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+// main {
+//   height: 100vh;
+//   width: 100vw;
+//   .bordered-area {
+    
+//     width: 75% ;
+//     // margin: 0 auto !important;
+//     margin: 0 auto;
+//   }
+
+ 
+// }
+
+// @media (max-width: 760px) {
+//   .main-container {
+
+//     .bordered-area {
+      
+//       width: 98% ;
+//       // margin: 0 auto !important;
+//       margin: 0 auto;
+//     }
+  
+   
+//   }
+// }
+
+
+
+
+.hidden {
+  opacity: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0f1014;
+}
+// body, html {
+//     overflow-x: hidden;
+// }
+
+body {
+  margin: 0;
+  // max-width: 1024px;
+  // color: #ffff;
+  margin: auto;
+  font-family: 'Raleway', sans-serif;
+}

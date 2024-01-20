@@ -1,0 +1,57 @@
+.side-bar {
+    color: white;
+    width: 6rem;
+    transition: width 0.3s;
+    position: fixed;
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        img {
+            width: 100%;
+        }
+    }
+    
+    .navs-con {
+        display: flex;
+        margin-left: 30px;
+        .hide {
+            opacity: 0;
+            transition: opacity 0.3s linear, width 0.3s;
+        }
+        .navs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            font-size: 18px;
+            section {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                transition: transform 0.3s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+                .material-symbols-outlined {
+                    font-size: 24px;
+                }  
+            }          
+        }
+        
+    }
+
+    &:hover {
+            width: 25%;
+            background:  rgba(0, 0, 0, 0.4);
+        
+       
+
+        .hide {
+            opacity: 1;
+        }
+    }
+}
+

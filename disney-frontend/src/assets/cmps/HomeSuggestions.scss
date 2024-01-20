@@ -1,0 +1,33 @@
+.layer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(15, 16, 20, 0) 73.08%, rgba(15, 16, 20, 0.01) 77.84%, rgba(15, 16, 20, 0.6) 79.74%, #0f1014),
+        linear-gradient(270deg, rgba(15, 16, 20, 0) 50%, rgba(15, 16, 20, 0.2) 60%, rgba(15, 16, 20, 0.7) 70%, #0f1014);
+}
+
+.border-highlight {
+    border: 2px solid #dedede; /* Example: red border, adjust as needed */
+}
+
+.home-suggestions {
+    .home-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+// .image-style::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 20%;
+//     height: 100%;
+//     backdrop-filter: blur(5px);
+// }
