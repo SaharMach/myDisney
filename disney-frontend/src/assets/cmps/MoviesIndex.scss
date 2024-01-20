@@ -1,6 +1,7 @@
 
 .movies {
     position: relative;
+    z-index: 30;
     .logo {
         position: absolute;
         width: 70%;
@@ -20,12 +21,7 @@
             display: flex;
             gap: 10px;
             position: relative;
-            .hovered-info {
-                position: absolute;
-                width: 300px;
-                height: 300px;
-                bottom: 0;
-            }
+            
         }
         .movie-card {
             position: relative;
@@ -41,25 +37,71 @@
                 transition: all 0.3s ease;
             }
         
-            .hovered-info {
-                position: absolute;
-                width: 400px; 
-                height: 400px;
-                bottom: 0; 
-                right: 0; 
-                top: 0;
-                left: 0;
-                border-radius: 10px;
-                background-color: #fff;
-                padding: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-                z-index: 10;
-            }
+           
         }
     }
 
-   
+    .hovered-info {
+        position: absolute;
+        width: 270px;
+        height: 330px;
+        border-radius: 10px;
+        background-color: #272727;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transition: all 0.3s ease;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 50%; /* Image takes 50% of the view */
+        }
+    
+        .title {
+            position: absolute;
+            bottom: 50%; 
+            width: 100%;
+            text-align: left;
+            color: white;
+        }
+    
+        .info-details-hovered {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            width: 100%;
+            padding: 10px;
+            z-index: 20;
+            .info-details-btns {
+                display: flex;
+                font-size: 12px;
+                font-weight: bold;
+                .watch-btn {
+                    padding: 6px 70px;
+                }
+                .watchlist-btn {
+                    padding: 6px 20px;
+                }
+            }
+            .date-time-lang {
+                font-size: 12px;
+                font-weight: bold;
+                display: flex;
+                gap: 5px;
+                margin-top: 5px;
+            }
+    
+            p {
+                margin-top: 5px;
+                font-size: 12px;
+                color: #7d7d7d;
+            }
+        }
+    }
+    
 }

@@ -1,7 +1,7 @@
 import { utilService } from "../services/util.service"
 
 export function MovieInfo({ type, movie }) {
-    console.log('entered movie info');
+    console.log('entered movie info', type);
     function getRandomLength() {
         const randNum = utilService.getRandomIntInclusive(0, 5)
         switch (randNum) {
@@ -19,21 +19,43 @@ export function MovieInfo({ type, movie }) {
                 return "2h 30m"
         }
     }
-    return (
 
-        <article className="info-details" style={type === 'Home' ? { left: '0px' } : {}}>
-            <span className="title">{movie.title}</span>
-            <section className="date-time-lang">
-                <span>{movie.release_date.slice(0, 4)}</span> ·
-                <span>{movie.original_language}</span> ·
-                <span>{getRandomLength()}</span> ·
-                <span className="age">{movie.adult ? '18+' : '12+'}</span>
-            </section>
-            <p>{movie.overview.slice(0, 100)}...</p>
-            <section className="info-details-btns">
-                <button className="watch-btn">Watch Now</button>
-                <button className="watchlist-btn">+</button>
-            </section>
-        </article>
+
+    function renderContent(type) {
+        if (!type || type === 'Home') {
+            return <article className="info-details" style={type === 'Home' ? { left: '0px' } : {}}>
+                <span className="title">{movie.title}</span>
+                <section className="date-time-lang">
+                    <span>{movie.release_date.slice(0, 4)}</span> ·
+                    <span>{movie.original_language}</span> ·
+                    <span>{getRandomLength()}</span> ·
+                    <span className="age">{movie.adult ? '18+' : '12+'}</span>
+                </section>
+                <p>{movie.overview.slice(0, 100)}...</p>
+                <section className="info-details-btns">
+                    <button className="watch-btn">Watch Now</button>
+                    <button className="watchlist-btn">+</button>
+                </section>
+            </article>
+        } else {
+            return <article className="info-details-hovered">
+                <span className="title">{movie.title}</span>
+                <section className="info-details-btns">
+                    <button className="watch-btn">Watch Now</button>
+                    <button className="watchlist-btn">+</button>
+                </section>
+                <section className="date-time-lang">
+                    <span>{movie.release_date.slice(0, 4)}</span> ·
+                    <span>{movie.original_language}</span> ·
+                    <span>{getRandomLength()}</span> ·
+                    <span className="age">{movie.adult ? '18+' : '12+'}</span>
+                </section>
+                <p>{movie.overview.slice(0, 100)}...</p>
+
+            </article>
+        }
+    }
+    return (
+        renderContent(type)
     )
 }
