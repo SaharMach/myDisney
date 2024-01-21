@@ -23,7 +23,7 @@ export function MovieInfo({ type, movie }) {
 
     function renderContent(type) {
         if (!type || type === 'Home') {
-            return <article className="info-details" style={type === 'Home' ? { left: '0px' } : {}}>
+            return <article className="info-details" style={type === 'Home' ? { left: '0px', bottom: '2.5em' } : {}}>
                 <span className="title">{movie.title}</span>
                 <section className="date-time-lang">
                     <span>{movie.release_date.slice(0, 4)}</span> ·
@@ -32,16 +32,20 @@ export function MovieInfo({ type, movie }) {
                     <span className="age">{movie.adult ? '18+' : '12+'}</span>
                 </section>
                 <p>{movie.overview.slice(0, 100)}...</p>
-                <section className="info-details-btns">
-                    <button className="watch-btn">Watch Now</button>
+                <section className="info-details-btns" >
+                    <button className="watch-btn"><span class="material-symbols-outlined">
+                        play_arrow
+                    </span> Watch Now</button>
                     <button className="watchlist-btn">+</button>
                 </section>
             </article>
         } else {
-            return <article className="info-details-hovered">
+            return <article className="info-details-hovered" >
                 <span className="title">{movie.title}</span>
                 <section className="info-details-btns">
-                    <button className="watch-btn">Watch Now</button>
+                    <button className="watch-btn"><span class="material-symbols-outlined">
+                        play_arrow
+                    </span> Watch Now</button>
                     <button className="watchlist-btn">+</button>
                 </section>
                 <section className="date-time-lang">
@@ -51,7 +55,6 @@ export function MovieInfo({ type, movie }) {
                     <span className="age">{movie.adult ? '18+' : '12+'}</span>
                 </section>
                 <p>{movie.overview.slice(0, 100)}...</p>
-
             </article>
         }
     }

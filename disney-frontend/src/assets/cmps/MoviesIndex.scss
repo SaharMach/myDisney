@@ -40,7 +40,11 @@
            
         }
     }
-
+    .hovered-info.special-hover {
+        top: 60%;
+        left: 60%;
+    }
+    
     .hovered-info {
         position: absolute;
         width: 270px;
@@ -88,8 +92,9 @@
                     padding: 6px 20px;
                 }
             }
+            
             .date-time-lang {
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: bold;
                 display: flex;
                 gap: 5px;
@@ -98,7 +103,7 @@
     
             p {
                 margin-top: 5px;
-                font-size: 12px;
+                font-size: 14px;
                 color: #7d7d7d;
             }
         }

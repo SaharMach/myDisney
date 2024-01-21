@@ -2,7 +2,7 @@ import logo from '../assets/imgs/disneylogo.png'
 
 export function SideBar() {
     return (
-        <aside className="side-bar h-full z-10 left-px flex flex-col justify-center" >
+        <aside className="side-bar h-full z-10 left-px flex flex-col justify-center z-50" >
             <div className='logo'>
 
                 <img src="https://img.hotstar.com/image/upload/v1656431462/web-images/logo-d-plus-horizontal.svg" alt="" />

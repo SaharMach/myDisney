@@ -31,9 +31,10 @@
                 gap: 10px;
                 cursor: pointer;
                 transition: transform 0.3s;
-
+                color: rgb(140, 139, 139);
                 &:hover {
                     transform: scale(1.1);
+                    color: #ffff;
                 }
                 .material-symbols-outlined {
                     font-size: 24px;
@@ -44,11 +45,15 @@
     }
 
     &:hover {
-            width: 25%;
-            background:  rgba(0, 0, 0, 0.4);
-        
-       
-
+        width: 15%;
+        background: rgba(2, 2, 2, 0.784);
+        background: linear-gradient(
+            to right,
+            rgba(2, 2, 2, 0.852), 
+            rgba(2, 2, 2, 0.755) 70%, 
+            transparent 100% 
+        );
+    
         .hide {
             opacity: 1;
         }
