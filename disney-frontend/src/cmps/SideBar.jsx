@@ -1,5 +1,5 @@
 import logo from '../assets/imgs/disneylogo.png'
-
+import { Link } from 'react-router-dom'
 export function SideBar() {
     return (
         <aside className="side-bar h-full z-10 left-px flex flex-col justify-center z-50" >
@@ -18,14 +18,16 @@ export function SideBar() {
                             My space
                         </span>
                     </section >
-                    <section className='w-full'>
-                        <span class="material-symbols-outlined">
-                            search
-                        </span>
-                        <span className='hide'>
-                            Search
-                        </span>
-                    </section>
+                    <Link to={'/search'}>
+                        <section className='w-full'>
+                            <span class="material-symbols-outlined">
+                                search
+                            </span>
+                            <span className='hide'>
+                                Search
+                            </span>
+                        </section>
+                    </Link>
                     <section className='w-full'>
                         <span class="material-symbols-outlined">
                             home

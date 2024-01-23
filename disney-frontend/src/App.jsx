@@ -6,6 +6,8 @@ import { store } from './store/store.js';
 import { Provider } from 'react-redux';
 import { MoviesIndex } from './pages/MoviesIndex';
 import { MovieDetails } from './cmps/MovieDetails';
+import { Search } from './cmps/Search.jsx';
+
 function App() {
   return (
     <main className='min-h-full'>
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />}>
             <Route path="studio/:studioId" element={<MoviesIndex />} />
             <Route path='/movie/:movieId' element={<MovieDetails />} />
+            <Route path='/search' element={<Search />} />
           </Route>
         </Routes>
       </Provider>
