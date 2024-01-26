@@ -18,23 +18,25 @@ export function SideBar() {
                             My space
                         </span>
                     </section >
-                    <Link to={'/search'}>
-                        <section className='w-full'>
+                    <section className='w-full'>
+                        <Link to={'/search'}>
                             <span class="material-symbols-outlined">
                                 search
                             </span>
                             <span className='hide'>
                                 Search
                             </span>
-                        </section>
-                    </Link>
+                        </Link>
+                    </section>
                     <section className='w-full'>
-                        <span class="material-symbols-outlined">
-                            home
-                        </span>
-                        <span className='hide'>
-                            Home
-                        </span>
+                        <Link to={'/'}>
+                            <span class="material-symbols-outlined">
+                                home
+                            </span>
+                            <span className='hide'>
+                                Home
+                            </span>
+                        </Link>
                     </section>
                     <section className='w-full'>
                         <span class="material-symbols-outlined">

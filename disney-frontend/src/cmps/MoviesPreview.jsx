@@ -2,16 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MovieInfo } from "./MovieInfo";
 export function MoviesPreview({ movies, onSelectMovie }) {
-    const [hoveredMovieId, setHoveredMovieId] = useState(null);
+    const [hoveredMovieId, setHoveredMovieId] = useState(null)
 
     const isSpecialHover = (index) => {
-        return index % 7 === 0 || (index >= 0 && index < 7);
-    };
+        return index % 7 === 0 || (index >= 0 && index < 7)
+    }
 
     return (
         <div className="movies-preview flex-wrap mb-10">
             {movies.map((movie, index) => {
-                const specialHover = isSpecialHover(index);
+                const specialHover = isSpecialHover(index)
                 return movie.backdrop_path && (
                     <>
                         <Link key={index} to={`/movie/${movie.id}`}>
@@ -31,7 +31,7 @@ export function MoviesPreview({ movies, onSelectMovie }) {
                             </div>
                         </Link>
                     </>
-                );
+                )
             })}
         </div>
     );
