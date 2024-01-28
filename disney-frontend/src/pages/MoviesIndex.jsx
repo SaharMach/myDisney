@@ -19,8 +19,6 @@ export function MoviesIndex({ type }) {
     const { studioId } = useParams()
     const [movies, setMovies] = useState()
     const [imgToShow, setImg] = useState('')
-    // const navigate = useNavigate()
-    console.log('movie index mount');
     useEffect(() => {
         init()
     }, [])

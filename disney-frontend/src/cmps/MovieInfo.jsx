@@ -1,7 +1,12 @@
+import { useEffect, useState } from "react";
 import { utilService } from "../services/util.service"
-
+import { MovieTrailer } from "./MovieTrailer";
 export function MovieInfo({ type, movie }) {
     console.log('entered movie info', type);
+    const [toggleTrailer, setToggleTrailer] = useState(false)
+    const API_KEY = 'AIzaSyB8ifuCghBu6hu0LH7X3lNjvmnt_TRQyhc'
+
+
     function getRandomLength() {
         const randNum = utilService.getRandomIntInclusive(0, 5)
         switch (randNum) {
@@ -20,6 +25,14 @@ export function MovieInfo({ type, movie }) {
         }
     }
 
+    const handleWatchClick = (event) => {
+        event.stopPropagation();
+        setToggleTrailer(!toggleTrailer);
+    };
+
+    const handleWatchlistClick = (event) => {
+        event.stopPropagation();
+    };
 
     function renderContent(type) {
         if (!type || type === 'Home') {
@@ -33,7 +46,7 @@ export function MovieInfo({ type, movie }) {
                 </section>
                 <p>{movie.overview.slice(0, 100)}...</p>
                 <section className="info-details-btns" >
-                    <button className="watch-btn"><span class="material-symbols-outlined">
+                    <button className="watch-btn" onClick={() => setToggleTrailer(!toggleTrailer)}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</button>
                     <button className="watchlist-btn">+</button>
@@ -43,10 +56,10 @@ export function MovieInfo({ type, movie }) {
             return <article className="info-details-hovered" >
                 <span className="title">{movie.title}</span>
                 <section className="info-details-btns">
-                    <button className="watch-btn"><span class="material-symbols-outlined">
+                    <button className="watch-btn" onClick={handleWatchClick}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</button>
-                    <button className="watchlist-btn">+</button>
+                    <button className="watchlist-btn" onClick={handleWatchlistClick}>+</button>
                 </section>
                 <section className="date-time-lang">
                     <span>{movie.release_date.slice(0, 4)}</span> ·
@@ -59,6 +72,9 @@ export function MovieInfo({ type, movie }) {
         }
     }
     return (
-        renderContent(type)
+        <>
+            {renderContent(type)}
+            {toggleTrailer && <MovieTrailer toggleTrailer={toggleTrailer} setToggleTrailer={setToggleTrailer} />}
+        </>
     )
 }
