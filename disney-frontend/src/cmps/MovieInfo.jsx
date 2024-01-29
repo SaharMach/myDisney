@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { utilService } from "../services/util.service"
 import { MovieTrailer } from "./MovieTrailer";
+import { Link } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 export function MovieInfo({ type, movie }) {
     console.log('entered movie info', type);
     const [toggleTrailer, setToggleTrailer] = useState(false)
-    const API_KEY = 'AIzaSyB8ifuCghBu6hu0LH7X3lNjvmnt_TRQyhc'
-
+    const navigate = useNavigate()
 
     function getRandomLength() {
         const randNum = utilService.getRandomIntInclusive(0, 5)
@@ -25,9 +26,9 @@ export function MovieInfo({ type, movie }) {
         }
     }
 
-    const handleWatchClick = (event) => {
+    function handleWatchClick(event, movie) {
         event.stopPropagation();
-        setToggleTrailer(!toggleTrailer);
+        navigate(`/trailer/${movie.title}`)
     };
 
     const handleWatchlistClick = (event) => {
@@ -46,9 +47,9 @@ export function MovieInfo({ type, movie }) {
                 </section>
                 <p>{movie.overview.slice(0, 100)}...</p>
                 <section className="info-details-btns" >
-                    <button className="watch-btn" onClick={() => setToggleTrailer(!toggleTrailer)}><span class="material-symbols-outlined">
+                    <Link className="watch-btn" to={`/trailer/${movie.title}`}><span class="material-symbols-outlined">
                         play_arrow
-                    </span> Watch Now</button>
+                    </span> Watch Now</Link>
                     <button className="watchlist-btn">+</button>
                 </section>
             </article>
@@ -56,13 +57,14 @@ export function MovieInfo({ type, movie }) {
             return <article className="info-details-hovered" >
                 <span className="title">{movie.title}</span>
                 <section className="info-details-btns">
-                    <button className="watch-btn" onClick={handleWatchClick}><span class="material-symbols-outlined">
+                    <button className="watch-btn" onClick={(e) => handleWatchClick(e, movie)}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</button>
                     <button className="watchlist-btn" onClick={handleWatchlistClick}>+</button>
                 </section>
                 <section className="date-time-lang">
-                    <span>{movie.release_date.slice(0, 4)}</span> ·
+                    {console.log(movie)}
+                    <span>{movie.release_date?.slice(0, 4)}</span> ·
                     <span>{movie.original_language}</span> ·
                     <span>{getRandomLength()}</span> ·
                     <span className="age">{movie.adult ? '18+' : '12+'}</span>

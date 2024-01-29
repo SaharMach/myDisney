@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { MoviesIndex } from './pages/MoviesIndex';
 import { MovieDetails } from './cmps/MovieDetails';
 import { Search } from './cmps/Search.jsx';
+import { MovieTrailer } from './cmps/MovieTrailer.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/search' element={<Search />} />
           </Route>
+          <Route path='/trailer/:movieName' element={<MovieTrailer />} />
         </Routes>
       </Provider>
     </main>
