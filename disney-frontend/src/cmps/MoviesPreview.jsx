@@ -18,12 +18,12 @@ export function MoviesPreview({ movies, onSelectMovie }) {
     };
 
     useEffect(() => {
-        movieRefs.current = movieRefs.current.slice(0, movies.length);
+        movieRefs.current = movieRefs.current.slice(0, movies?.length);
     }, [movies]);
 
     return (
         <div ref={containerRef} className="movies-preview flex-wrap mb-10">
-            {movies.map((movie, index) => (
+            {movies?.map((movie, index) => (
                 <Link key={movie.id} to={`/movie/${movie.id}`} ref={el => movieRefs.current[index] = el}>
                     <div
                         className="movie-card"

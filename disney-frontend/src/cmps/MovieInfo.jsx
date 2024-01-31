@@ -40,12 +40,12 @@ export function MovieInfo({ type, movie }) {
             return <article className="info-details" style={type === 'Home' ? { left: '0px', bottom: '2.5em' } : {}}>
                 <span className="title">{movie.title}</span>
                 <section className="date-time-lang">
-                    <span>{movie.release_date.slice(0, 4)}</span> ·
+                    <span>{movie.release_date?.slice(0, 4)}</span> ·
                     <span>{movie.original_language}</span> ·
                     <span>{getRandomLength()}</span> ·
                     <span className="age">{movie.adult ? '18+' : '12+'}</span>
                 </section>
-                <p>{movie.overview.slice(0, 100)}...</p>
+                <p>{movie.overview?.slice(0, 100)}...</p>
                 <section className="info-details-btns" >
                     <Link className="watch-btn" to={`/trailer/${movie.title}`}><span class="material-symbols-outlined">
                         play_arrow
@@ -63,7 +63,6 @@ export function MovieInfo({ type, movie }) {
                     <button className="watchlist-btn" onClick={handleWatchlistClick}>+</button>
                 </section>
                 <section className="date-time-lang">
-                    {console.log(movie)}
                     <span>{movie.release_date?.slice(0, 4)}</span> ·
                     <span>{movie.original_language}</span> ·
                     <span>{getRandomLength()}</span> ·

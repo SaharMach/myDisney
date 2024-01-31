@@ -15,13 +15,15 @@ import starWarsLogo from '../assets/imgs/SWSL.png'
 import { setMovie } from "../store/movies.action";
 import { useNavigate } from 'react-router';
 
-export function MoviesIndex({ type }) {
+export function MoviesIndex({ movies, type }) {
+    console.log(movies);
     const { studioId } = useParams()
-    const [movies, setMovies] = useState()
+    const [moviesToShow, setMovies] = useState()
     const [imgToShow, setImg] = useState('')
     useEffect(() => {
-        init()
-    }, [])
+        init();
+    }, [studioId, movies])
+
 
     const duos = [
         { img: disneyImg, logo: disneyLogo, id: '3166' },
@@ -33,9 +35,12 @@ export function MoviesIndex({ type }) {
     ]
 
     async function init() {
-        const moviesData = await loadMovies(studioId);
-        setMovies(moviesData);
-        setImg(duos.find(duo => duo.id === studioId))
+        if (!movies) {
+            const moviesData = await loadMovies(studioId);
+            setMovies(moviesData);
+            setImg(duos.find(duo => duo.id === studioId))
+        }
+        else setMovies(movies)
     }
 
     function onSelectMovie(movie) {
@@ -48,7 +53,7 @@ export function MoviesIndex({ type }) {
                 <img className="studio-img" src={imgToShow.img} alt="" />
             }
             <img className="logo" src={imgToShow?.logo} alt="" />
-            <MoviesList type={type} movies={movies} onSelectMovie={onSelectMovie} />
+            <MoviesList type={type} movies={moviesToShow} onSelectMovie={onSelectMovie} />
         </div>
     )
 }
