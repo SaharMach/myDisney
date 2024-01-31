@@ -7,14 +7,28 @@ export function MoviesPreview({ movies, onSelectMovie }) {
     const containerRef = useRef(null)
     const movieRefs = useRef([])
 
-    const isSpecialHover = (movieElement) => {
-        if (!containerRef.current || !movieElement) return { isTop: false, isLeft: false }
-        const containerRect = containerRef.current.getBoundingClientRect()
-        const movieRect = movieElement.getBoundingClientRect()
-        const isTopRow = movieRect.top === containerRect.top
-        const isLeftMost = movieRect.left === containerRect.left
+    // const isSpecialHover = (movieElement) => {
+    //     if (!containerRef.current || !movieElement) return { isTop: false, isLeft: false }
+    //     const containerRect = containerRef.current.getBoundingClientRect()
+    //     const movieRect = movieElement.getBoundingClientRect()
+    //     const isTopRow = movieRect.top === containerRect.top
+    //     const isLeftMost = movieRect.left === containerRect.left
 
-        return { isTop: isTopRow, isLeft: isLeftMost }
+    //     return { isTop: isTopRow, isLeft: isLeftMost }
+    // };
+
+    const isSpecialHover = (movieElement) => {
+        if (!containerRef.current || !movieElement) return { isTop: false, isLeft: false };
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const movieRect = movieElement.getBoundingClientRect();
+
+        // Determine if within threshold distance from container edges
+        const topThreshold = 2; // Adjust threshold as needed
+        const leftThreshold = 2; // Adjust threshold as needed
+        const isTopRow = movieRect.top <= containerRect.top + topThreshold;
+        const isLeftMost = movieRect.left <= containerRect.left + leftThreshold;
+
+        return { isTop: isTopRow, isLeft: isLeftMost };
     };
 
     useEffect(() => {

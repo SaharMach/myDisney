@@ -16,9 +16,8 @@ import { setMovie } from "../store/movies.action";
 import { useNavigate } from 'react-router';
 
 export function MoviesIndex({ movies, type }) {
-    console.log(movies);
     const { studioId } = useParams()
-    const [moviesToShow, setMovies] = useState()
+    const [moviesToShow, setMovies] = useState(movies);
     const [imgToShow, setImg] = useState('')
     useEffect(() => {
         init();
@@ -35,8 +34,11 @@ export function MoviesIndex({ movies, type }) {
     ]
 
     async function init() {
-        if (!movies) {
+
+        if (!moviesToShow) {
+            console.log('entered if');
             const moviesData = await loadMovies(studioId);
+            console.log(moviesData);
             setMovies(moviesData);
             setImg(duos.find(duo => duo.id === studioId))
         }
@@ -46,7 +48,7 @@ export function MoviesIndex({ movies, type }) {
     function onSelectMovie(movie) {
         setMovie(movie)
     }
-    if (!movies) return <div>loading...</div>
+    if (!moviesToShow) return <div>loading...</div>
     return (
         <div className="movies relative w-full flex flex-col">
             {imgToShow &&
