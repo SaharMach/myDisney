@@ -1,15 +1,14 @@
 import { useState } from 'react'
 // import { login, signup } from '../store/actions/user.actions'
-import { signup, login } from '../store/actions/user.actions'
 import { useNavigate } from 'react-router'
-
+import { signup, login } from '../store/user.actions.js'
 export function LoginSignup() {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '', email: '', cart: [] })
+    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const navigate = useNavigate()
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', email: '', cart: [] })
+        setCredentials({ username: '', password: '', fullname: '' })
         setIsSignup(false)
     }
 
@@ -26,14 +25,15 @@ export function LoginSignup() {
                 if (!credentials.username) return
                 const user = await login(credentials)
                 if (user) {
-                    navigate('/categories')
+                    navigate('/')
                     clearState()
                 }
             } else {
                 if (!credentials.username || !credentials.password || !credentials.fullname) return
                 const user = await signup(credentials)
+                console.log(user);
                 if (user) {
-                    navigate('/categories')
+                    navigate('/')
                     clearState()
                 }
 
@@ -97,13 +97,13 @@ export function LoginSignup() {
                                     required
                                 />
                                 {/* <ImgUploader onUploaded={onUploaded} /> */}
-                                <input
+                                {/* <input
                                     type="text"
                                     name="email"
                                     placeholder="Enter email"
                                     onChange={handleChange}
                                     required
-                                />
+                                /> */}
                             </>
                         )}
                     <button>{isSignup ? 'Sign up' : 'Continue'}</button>

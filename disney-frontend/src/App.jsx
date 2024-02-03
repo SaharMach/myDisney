@@ -8,7 +8,7 @@ import { MoviesIndex } from './pages/MoviesIndex';
 import { MovieDetails } from './cmps/MovieDetails';
 import { MovieTrailer } from './cmps/MovieTrailer.jsx';
 import { Search } from './pages/Search.jsx';
-
+import { LoginSignup } from './pages/LoginPage.jsx';
 function App() {
   return (
     <main className='min-h-full'>
@@ -20,6 +20,7 @@ function App() {
             <Route path='/search' element={<Search />} />
           </Route>
           <Route path='/trailer/:movieName' element={<MovieTrailer />} />
+          <Route path='/login' element={<LoginSignup />} />
         </Routes>
       </Provider>
     </main>
