@@ -1,6 +1,10 @@
 import logo from '../assets/imgs/disneylogo.png'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 export function SideBar() {
+
+    const user = useSelector(storeState => storeState.userModule.user)
+    console.log(user, 'from side bar');
     return (
         <aside className="side-bar h-full z-10 left-px flex flex-col justify-center z-50" >
             <div className='logo'>
@@ -11,12 +15,14 @@ export function SideBar() {
 
                 <section className="navs flex flex-col gap-10 items-center justify-center text-slate-300" >
                     <section className='w-full'>
-                        <span class="material-symbols-outlined">
-                            account_circle
-                        </span>
-                        <span className='hide'>
-                            My space
-                        </span>
+                        <Link to={`${user ? '/watchlist' : '/login'}`}>
+                            <span class="material-symbols-outlined">
+                                account_circle
+                            </span>
+                            <span className='hide'>
+                                My space
+                            </span>
+                        </Link>
                     </section >
                     <section className='w-full'>
                         <Link to={'/search'}>

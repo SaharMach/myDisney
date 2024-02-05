@@ -22,9 +22,8 @@ export function MoviesPreview({ movies, onSelectMovie }) {
         const containerRect = containerRef.current.getBoundingClientRect();
         const movieRect = movieElement.getBoundingClientRect();
 
-        // Determine if within threshold distance from container edges
-        const topThreshold = 2; // Adjust threshold as needed
-        const leftThreshold = 2; // Adjust threshold as needed
+        const topThreshold = 2;
+        const leftThreshold = 2;
         const isTopRow = movieRect.top <= containerRect.top + topThreshold;
         const isLeftMost = movieRect.left <= containerRect.left + leftThreshold;
 

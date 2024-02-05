@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { utilService } from "../services/util.service"
 import { MovieTrailer } from "./MovieTrailer";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { update } from "../store/user.actions";
 export function MovieInfo({ type, movie }) {
     console.log('entered movie info', type);
     const [toggleTrailer, setToggleTrailer] = useState(false)
     const navigate = useNavigate()
+    const user = useSelector(storeState => storeState.userModule.user)
+
 
     function getRandomLength() {
         const randNum = utilService.getRandomIntInclusive(0, 5)
@@ -26,14 +30,26 @@ export function MovieInfo({ type, movie }) {
         }
     }
 
-    function handleWatchClick(event, movie) {
-        event.stopPropagation();
+    function handleWatchClick(ev, movie) {
+        ev.stopPropagation()
+        ev.preventDefault()
         navigate(`/trailer/${movie.title}`)
     };
 
-    const handleWatchlistClick = (event) => {
-        event.stopPropagation();
-    };
+    function handleWatchlistClick(ev) {
+        ev.stopPropagation()
+        ev.preventDefault()
+        if (!user) return
+        console.log('watchlist');
+        addToWatchlist()
+    }
+
+    async function addToWatchlist() {
+        let updatedUser = { ...user, watchlist: [...user.watchlist, movie] };
+        const check = await update(updatedUser);
+        console.log('check user', check);
+    }
+
 
     function renderContent(type) {
         if (!type || type === 'Home') {
@@ -50,7 +66,7 @@ export function MovieInfo({ type, movie }) {
                     <Link className="watch-btn" to={`/trailer/${movie.title}`}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</Link>
-                    <button className="watchlist-btn">+</button>
+                    <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}>+</button>
                 </section>
             </article>
         } else {
@@ -60,7 +76,7 @@ export function MovieInfo({ type, movie }) {
                     <button className="watch-btn" onClick={(e) => handleWatchClick(e, movie)}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</button>
-                    <button className="watchlist-btn" onClick={handleWatchlistClick}>+</button>
+                    <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}>+</button>
                 </section>
                 <section className="date-time-lang">
                     <span>{movie.release_date?.slice(0, 4)}</span> ·

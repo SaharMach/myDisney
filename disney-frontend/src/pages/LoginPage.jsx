@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { signup, login } from '../store/user.actions.js'
 export function LoginSignup() {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '', watchlist: [] })
     const [isSignup, setIsSignup] = useState(false)
     const navigate = useNavigate()
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '' })
+        setCredentials({ username: '', password: '', fullname: '', watchlist: [] })
         setIsSignup(false)
     }
 
