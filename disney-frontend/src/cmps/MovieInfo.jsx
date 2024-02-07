@@ -64,7 +64,7 @@ export function MovieInfo({ type, movie }) {
     function renderContent(type) {
         if (!type || type === 'Home') {
             return <article className="info-details" style={type === 'Home' ? { left: '0px', bottom: '2.5em' } : {}}>
-                <span className="title">{movie.title}</span>
+                <span className="title">{movie.title || movie.name}</span>
                 <section className="date-time-lang">
                     <span>{movie.release_date?.slice(0, 4)}</span> ·
                     <span>{movie.original_language}</span> ·
@@ -92,7 +92,7 @@ export function MovieInfo({ type, movie }) {
             </article>
         } else {
             return <article className="info-details-hovered" >
-                <span className="title">{movie.title}</span>
+                <span className="title">{movie.title || movie.name}</span>
                 <section className="info-details-btns">
                     <button className="watch-btn" onClick={(e) => handleWatchClick(e, movie)}><span class="material-symbols-outlined">
                         play_arrow

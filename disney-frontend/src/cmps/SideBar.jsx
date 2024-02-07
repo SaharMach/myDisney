@@ -47,20 +47,24 @@ export function SideBar() {
                         </Link>
                     </section>
                     <section className='w-full'>
-                        <span class="material-symbols-outlined">
-                            tv_gen
-                        </span>
-                        <span className='hide'>
-                            Series
-                        </span>
+                        <Link to={'/series'}>
+                            <span class="material-symbols-outlined">
+                                tv_gen
+                            </span>
+                            <span className='hide'>
+                                Series
+                            </span>
+                        </Link>
                     </section>
                     <section className='w-full'>
-                        <span class="material-symbols-outlined">
-                            tv
-                        </span>
-                        <span className='hide'>
-                            Movies
-                        </span>
+                        <Link to={'/'}>
+                            <span class="material-symbols-outlined">
+                                tv
+                            </span>
+                            <span className='hide'>
+                                Movies
+                            </span>
+                        </Link>
                     </section>
                 </section>
             </div>

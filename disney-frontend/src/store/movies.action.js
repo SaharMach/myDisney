@@ -47,6 +47,24 @@ export async function loadHomeMovies() {
     }
 }
 
+export async function loadSeries() {
+    try {
+        return await moviesService.fetchTVSeries()
+    } catch (err) {
+        console.log('err:', err)
+        throw err
+    }
+}
+
+export async function loadTopRatedSeries() {
+    try {
+        return await moviesService.fetchTopRatedSeries()
+    } catch (err) {
+        console.log('err:', err)
+        throw err
+    }
+}
+
 // export async function removeBoard(boardId) {
 //     try {
 //         await boardService.remove(boardId)

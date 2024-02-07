@@ -10,6 +10,7 @@ import { MovieTrailer } from './cmps/MovieTrailer.jsx';
 import { Search } from './pages/Search.jsx';
 import { LoginSignup } from './pages/LoginPage.jsx';
 import { WatchList } from './pages/WatchList.jsx';
+import { Series } from './pages/Series.jsx';
 function App() {
   return (
     <main className='min-h-full'>
@@ -20,7 +21,7 @@ function App() {
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/search' element={<Search />} />
             <Route path='watchlist' element={<WatchList />} />
-
+            <Route path='/series' element={<Series />} />
           </Route>
           <Route path='/trailer/:movieName' element={<MovieTrailer />} />
           <Route path='/login' element={<LoginSignup />} />
