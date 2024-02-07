@@ -3,8 +3,8 @@ import { httpService } from './http.service'
 import { utilService } from './util.service'
 import axios from 'axios'
 
-const API_KEY = '2ff60abfe88b7a06269cb368c24bb201';
-
+const API_KEY = '2ff60abfe88b7a06269cb368c24bb201'
+const API_KEY2 = '5f10b53dc04ac48359b4ae9d6451091e'
 export const moviesService = {
 
     // getUsers,
@@ -14,15 +14,25 @@ export const moviesService = {
    
 }
 export async function getMovies() {
-    
+    const endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
     try {
-        console.log('called api');
-        const endpoint = 'https://api.themoviedb.org/3/movie/popular?api_key=2ff60abfe88b7a06269cb368c24bb201';
         const response = await axios.get(endpoint);
         return response.data.results;
     } catch (error) {
-        console.error('Error fetching movies', error);
-        throw error;
+        console.error('Error fetching movies with API_KEY', error);
+        if (isApiKeyError(error)) {
+            console.log('Retrying with API_KEY2');
+            const fallbackEndpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY2}`;
+            try {
+                const response = await axios.get(fallbackEndpoint);
+                return response.data.results;
+            } catch (fallbackError) {
+                console.error('Error fetching movies with API_KEY2', fallbackError);
+                throw fallbackError;
+            }
+        } else {
+            throw error;
+        }
     }
 }
 
@@ -36,17 +46,30 @@ export async function getSuggestions() {
     if (cachedMovies) {
         return cachedMovies;
     }
+    const endpoint = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
     try {
-        console.log('called api');
-        const endpoint = 'https://api.themoviedb.org/3/movie/top_rated?api_key=2ff60abfe88b7a06269cb368c24bb201&language=en-US&page=1';
         const response = await axios.get(endpoint);
         cachedMovies = response.data.results;
         return cachedMovies;
     } catch (error) {
-        console.error('Error fetching movies', error);
-        throw error;
+        console.error('Error fetching suggestions with API_KEY', error);
+        if (isApiKeyError(error)) {
+            console.log('Retrying with API_KEY2');
+            const fallbackEndpoint = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY2}&language=en-US&page=1`;
+            try {
+                const response = await axios.get(fallbackEndpoint);
+                cachedMovies = response.data.results;
+                return cachedMovies;
+            } catch (fallbackError) {
+                console.error('Error fetching suggestions with API_KEY2', fallbackError);
+                throw fallbackError;
+            }
+        } else {
+            throw error;
+        }
     }
 }
+
 
 
 
@@ -72,3 +95,8 @@ async function getById(studioId) {
         throw error;
     }
 }
+
+function isApiKeyError(error) {
+    return error.response && error.response.status === 403;
+}
+

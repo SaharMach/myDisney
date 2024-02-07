@@ -37,7 +37,7 @@
     }
     &-btns{
         display: flex;
-        gap: 15px;
+        gap: 10px;
         
         .watch-btn {
             display: flex;
@@ -45,12 +45,22 @@
             padding: 14px 125px;
             background-color: #585858a9;
             border-radius: 6px;
+            span {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
         }
         .watchlist-btn {
             padding: 8px 22px;
             border-radius: 6px;
 
             background-color: #585858a9;
+            span {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
         }
     }
 }

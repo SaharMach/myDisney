@@ -15,7 +15,7 @@ import starWarsLogo from '../assets/imgs/SWSL.png'
 import { setMovie } from "../store/movies.action";
 import { useNavigate } from 'react-router';
 
-export function MoviesIndex({ movies, type }) {
+export function MoviesIndex({ movies, type, onDeleteMovie }) {
     const { studioId } = useParams()
     const [moviesToShow, setMovies] = useState(movies);
     const [imgToShow, setImg] = useState('')

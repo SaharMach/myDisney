@@ -19,10 +19,11 @@ function App() {
             <Route path="studio/:studioId" element={<MoviesIndex />} />
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/search' element={<Search />} />
+            <Route path='watchlist' element={<WatchList />} />
+
           </Route>
           <Route path='/trailer/:movieName' element={<MovieTrailer />} />
           <Route path='/login' element={<LoginSignup />} />
-          <Route path='watchlist' element={<WatchList />} />
         </Routes>
       </Provider>
     </main>

@@ -7,10 +7,12 @@ export function SideBar() {
     console.log(user, 'from side bar');
     return (
         <aside className="side-bar h-full z-10 left-px flex flex-col justify-center z-50" >
-            <div className='logo'>
+            <Link to={'/'}>
+                <div className='logo'>
 
-                <img src="https://img.hotstar.com/image/upload/v1656431462/web-images/logo-d-plus-horizontal.svg" alt="" />
-            </div>
+                    <img src="https://img.hotstar.com/image/upload/v1656431462/web-images/logo-d-plus-horizontal.svg" alt="" />
+                </div>
+            </Link>
             <div className='navs-con'>
 
                 <section className="navs flex flex-col gap-10 items-center justify-center text-slate-300" >

@@ -1,0 +1,25 @@
+.watchlist-con {
+    color: white;
+    
+    position: relative;
+    .logout-btn {
+        position: absolute;
+        right: 0;
+        padding: 20px 40px;
+        background-color: #1e1d23;
+        border-bottom-left-radius: 10px;
+    }
+
+    .watchlist {
+        padding: 20px;
+        height: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-txt {
+            margin-top: 200px;
+            font-size: 20px;
+        }
+
+    }
+}

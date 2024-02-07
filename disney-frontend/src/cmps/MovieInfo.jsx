@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { update } from "../store/user.actions";
+import { useLocation } from "react-router-dom";
 export function MovieInfo({ type, movie }) {
+    const location = useLocation()
     console.log('entered movie info', type);
     const [toggleTrailer, setToggleTrailer] = useState(false)
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.user)
-
+    // const isWatchlistUrl = location.pathname.includes('/watchlist')
+    const userWatchlist = user?.watchlist || [];
+    let isAlreadyInWatchlist = userWatchlist.some(m => movie.id === m.id);
 
     function getRandomLength() {
         const randNum = utilService.getRandomIntInclusive(0, 5)
@@ -44,13 +48,19 @@ export function MovieInfo({ type, movie }) {
         addToWatchlist()
     }
 
-    async function addToWatchlist() {
+    async function addToWatchlist(ev) {
+
         let updatedUser = { ...user, watchlist: [...user.watchlist, movie] };
-        const check = await update(updatedUser);
-        console.log('check user', check);
+        await update(updatedUser);
+    }
+    async function removeFromWatchlist(ev, movieId) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        let updatedUser = { ...user, watchlist: user.watchlist.filter(movie => movie.id !== movieId) };
+        await update(updatedUser);
     }
 
-
+    console.log('checkkkkk', isAlreadyInWatchlist);
     function renderContent(type) {
         if (!type || type === 'Home') {
             return <article className="info-details" style={type === 'Home' ? { left: '0px', bottom: '2.5em' } : {}}>
@@ -66,7 +76,18 @@ export function MovieInfo({ type, movie }) {
                     <Link className="watch-btn" to={`/trailer/${movie.title}`}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</Link>
-                    <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}>+</button>
+                    {isAlreadyInWatchlist ?
+                        <button className="watchlist-btn" onClick={(e) => removeFromWatchlist(e, movie.id)}><span class="material-symbols-outlined">
+                            remove
+                        </span>
+                        </button>
+                        :
+                        <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}><span class="material-symbols-outlined">
+                            add
+                        </span>
+                        </button>
+
+                    }
                 </section>
             </article>
         } else {
@@ -76,7 +97,16 @@ export function MovieInfo({ type, movie }) {
                     <button className="watch-btn" onClick={(e) => handleWatchClick(e, movie)}><span class="material-symbols-outlined">
                         play_arrow
                     </span> Watch Now</button>
-                    <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}>+</button>
+                    {isAlreadyInWatchlist ? <button className="watchlist-btn" onClick={(e) => removeFromWatchlist(e, movie.id)}><span class="material-symbols-outlined">
+                        remove
+                    </span>
+                    </button>
+                        :
+                        <button className="watchlist-btn" onClick={(e) => handleWatchlistClick(e)}><span class="material-symbols-outlined">
+                            add
+                        </span>
+                        </button>
+                    }
                 </section>
                 <section className="date-time-lang">
                     <span>{movie.release_date?.slice(0, 4)}</span> ·
@@ -85,6 +115,10 @@ export function MovieInfo({ type, movie }) {
                     <span className="age">{movie.adult ? '18+' : '12+'}</span>
                 </section>
                 <p>{movie.overview.slice(0, 100)}...</p>
+                {/* {isWatchlistUrl && <button onClick={(e) => removeFromWatchlist(e, movie.id)}>
+                    X
+                </button>
+                } */}
             </article>
         }
     }

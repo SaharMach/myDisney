@@ -15,7 +15,7 @@
         overflow-x: auto;
         // padding: 20px;
         margin-top: 20px;
-
+        width: 100%;
         color: white;
         top: 70%;
         min-height: 100vh;
@@ -25,6 +25,7 @@
             position: relative;
             
         }
+       
         .movie-card {
             position: relative;
             height: 280px;
@@ -44,16 +45,16 @@
         }
     }
     .hovered-info.top {
-        top: 67.5%;
+        top: 75%;
     }
     .hovered-info.left {
 
-        left: 75%;
+        left: 85%;
     }
     .hovered-info {
         position: absolute;
-        width: 300px;
-        height: 380px;
+        width: 340px;
+        height: 420px;
         border-radius: 10px;
         background-color: #272727;
         display: flex;
@@ -79,6 +80,8 @@
             width: 100%;
             text-align: left;
             color: white;
+            text-shadow: 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px 0px 0 black, 0px 2px 0 black, -2px 0px 0 black, 0px -2px 0 black;
+
         }
     
         .info-details-hovered {
@@ -90,16 +93,33 @@
             z-index: 20;
             .info-details-btns {
                 display: flex;
-                font-size: 12px;
                 font-weight: bold;
+                justify-content: space-between;
                 .watch-btn {
-                    padding: 6px 60px;
+                    background-color: #fff;
+                    padding: 10px 70px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    color: #272727;
+                    font-size: 14px;
+                    span {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        font-size: 28px;
+                        color: #272727;
+                    }
                 }
                 .watchlist-btn {
-                    padding: 6px 20px;
+                    padding: 10px 20px;
+                    span {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        font-size:20px;
+
+                    }
                 }
             }
             
@@ -115,8 +135,10 @@
                 margin-top: 5px;
                 font-size: 14px;
                 color: #7d7d7d;
+                display: flex;
             }
         }
     }
     
 }
+
