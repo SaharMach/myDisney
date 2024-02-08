@@ -61,10 +61,10 @@ export function LoginSignup() {
     // }
 
     return (
-        <div className="login-page-container flex justify-center">
+        <div className="login-page-container ml-24 flex justify-center">
             <div className='login-page'>
                 <div className='login-page-titles'>
-                    <p className='logo'>PDT</p>
+                    {/* <p className='logo'>Login or signup to continue</p> */}
                     <p className='welcome-title'>{isSignup ? 'Sign up' : 'Log in'} to continue</p>
                 </div>
                 <form className="login-page-form" onSubmit={onConnect}>
@@ -106,7 +106,7 @@ export function LoginSignup() {
                                 /> */}
                             </>
                         )}
-                    <button>{isSignup ? 'Sign up' : 'Continue'}</button>
+                    <button className='sign-btn'>{isSignup ? 'Sign up' : 'Continue'}</button>
                 </form>
                 <div className='toggle-login-signup flex'>
                     {/* <hr /> */}

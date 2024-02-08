@@ -22,9 +22,9 @@ function App() {
             <Route path='/search' element={<Search />} />
             <Route path='watchlist' element={<WatchList />} />
             <Route path='/series' element={<Series />} />
+            <Route path='/login' element={<LoginSignup />} />
           </Route>
           <Route path='/trailer/:movieName' element={<MovieTrailer />} />
-          <Route path='/login' element={<LoginSignup />} />
         </Routes>
       </Provider>
     </main>
