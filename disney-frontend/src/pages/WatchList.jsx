@@ -25,7 +25,7 @@ export function WatchList() {
             Logout
         </button>
         <div className="watchlist">
-            {userWatchlist.length > 0 ? <MoviesIndex type={'Watchlist'} movies={userWatchlist} /> :
+            {userWatchlist?.length > 0 ? <MoviesIndex type={'Watchlist'} movies={userWatchlist} /> :
                 <span className="watchlist-txt">Add movies to your watchlist...</span>}
         </div>
     </div>

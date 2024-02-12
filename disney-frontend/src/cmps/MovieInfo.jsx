@@ -8,7 +8,6 @@ import { update } from "../store/user.actions";
 import { useLocation } from "react-router-dom";
 export function MovieInfo({ type, movie }) {
     const location = useLocation()
-    console.log('entered movie info', type);
     const [toggleTrailer, setToggleTrailer] = useState(false)
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.user)
@@ -44,7 +43,6 @@ export function MovieInfo({ type, movie }) {
         ev.stopPropagation()
         ev.preventDefault()
         if (!user) return
-        console.log('watchlist');
         addToWatchlist()
     }
 
@@ -60,7 +58,6 @@ export function MovieInfo({ type, movie }) {
         await update(updatedUser);
     }
 
-    console.log('checkkkkk', isAlreadyInWatchlist);
     function renderContent(type) {
         if (!type || type === 'Home') {
             return <article className="info-details" style={type === 'Home' ? { left: '0px', bottom: '2.5em' } : {}}>

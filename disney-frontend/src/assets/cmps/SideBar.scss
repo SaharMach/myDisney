@@ -1,8 +1,14 @@
+
+@media only screen and (min-width: 768px) {
+
 .side-bar {
     color: white;
     width: 6rem;
     transition: width 0.3s;
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     .logo {
         position: absolute;
         top: 10px;
@@ -10,6 +16,12 @@
         img {
             width: 100%;
         }
+    }
+
+    .menu {
+        // position: absolute;
+        // right: 0;
+        display: none;
     }
     
     .navs-con {
@@ -59,4 +71,54 @@
         }
     }
 }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+        .side-bar {
+            // display: none;
+            position: fixed;
+            width: 100%;
+            .hide {
+                display: none;
+            }
+            .menu {
+                display: block;
+                color: rgb(255, 255, 255);
+                position: absolute;
+                right: 0;
+                cursor: pointer;
+                top: 0;
+              
+            }
+            .navs-con {
+                position: absolute;
+                width: 100%;
+                background-color: #000000;
+                height: 50vh;
+                .hide {
+                    display: block;
+                }
+
+                section, a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    transition: transform 0.3s;
+                    // color: rgb(140, 139, 139);
+                    // &:hover {
+                    //     transform: scale(1.1);
+                    //     color: #ffff;
+                    // }
+                    .material-symbols-outlined {
+                        font-size: 24px;
+                    }  
+                } 
+            }
+            
+        }
+  }
 

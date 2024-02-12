@@ -9,7 +9,6 @@ export function Home() {
     const location = useLocation()
     const [suggestedMovies, setSuggestedMovies] = useState()
     const [homeMovies, setHomeMovies] = useState()
-
     useEffect(() => {
         const fetchMovies = async () => {
             const sugMovies = await loadSuggestions()
@@ -26,7 +25,8 @@ export function Home() {
     const isHomePage = location.pathname === '/';
 
     return (
-        <div className="home-page bg-[#0f1014] h-screen flex relative">
+        <div className="home-page bg-[#0f1014] w-full h-full h-screen flex relative">
+
             <SideBar />
             {isHomePage ? (
                 <section className="w-full ml-24 mb-6">
