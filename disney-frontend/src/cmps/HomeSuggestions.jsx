@@ -37,7 +37,7 @@ export function HomeSuggestions({ movies }) {
                 </div>
                 <MovieInfo type={'Home'} movie={currentMovie} />
 
-                <div className="overlay-container flex items-center gap-1 absolute bottom-10 right-14">
+                <div className="overlay-container items-center gap-1 absolute bottom-10 right-14">
                     {carouselIndex > 0 && (
                         <button onClick={handlePrevClick} className="carousel-control"><span class="material-symbols-outlined">
                             chevron_left

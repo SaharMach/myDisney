@@ -21,7 +21,7 @@ export function SideBar() {
             </span>
             <div className={`navs-con ${activeClass}`}>
 
-                <section className="navs flex flex-col gap-10 items-center justify-center text-slate-300" >
+                <section className="navs flex flex-col text-slate-300" >
                     <section className='w-full'>
                         <Link to={`${user ? '/watchlist' : '/login'}`}>
                             <span class="material-symbols-outlined">

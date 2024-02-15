@@ -24,4 +24,18 @@
         color: #dedede;
         margin-top: 5px;
     }
+    .overlay-container {
+        display: flex;
+    }
 }
+
+
+@media only screen and (max-width: 768px) {
+    .home-suggestions{
+
+        .overlay-container {
+            display: none;
+        }
+    }
+}
+

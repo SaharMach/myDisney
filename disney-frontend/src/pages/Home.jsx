@@ -29,7 +29,7 @@ export function Home() {
 
             <SideBar />
             {isHomePage ? (
-                <section className="w-full ml-24 mb-6">
+                <section className="home-wrapper w-full mb-6">
                     <HomeSuggestions movies={suggestedMovies} />
                     <Studios />
                     <MoviesIndex type={'Home'} movies={homeMovies} />
