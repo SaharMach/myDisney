@@ -1,0 +1,18 @@
+@media only screen and (min-width: 768px) {
+
+    .studios-con {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        margin-right: 56px;
+        height: 112px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .studios-con {
+        padding: 10px;
+        display: flex;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        height: 240px;
+    }
+}

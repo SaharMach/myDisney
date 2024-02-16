@@ -38,12 +38,15 @@ export function Series() {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <section className="series-con w-full mb-6">
+        <section className="series-con w-full">
 
-            <div className="ml-24">
+            <div className="series">
                 <HomeSuggestions movies={topRatedSeries} />
             </div>
-            <MoviesIndex movies={series} />
+            <section>
+
+                <MoviesIndex movies={series} />
+            </section>
         </section>
     );
 }

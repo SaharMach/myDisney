@@ -1,9 +1,16 @@
+
+@media only screen and (min-width: 768px) {
+    .info-details {
+        bottom: 12rem;
+        width: 450px;
+        left: 110px;
+
+    }
+
+}
 .info-details {
     position: absolute;
-    bottom: 12rem;
     color: white;
-    width: 450px;
-    left: 110px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -70,8 +77,9 @@
 @media only screen and (max-width: 768px) {
     .info-details {
         width: 100%;
-        margin-bottom: 70px;
+        // margin-bottom: 70px;
         padding: 10px;
+        bottom: 0;
         &-btns {
             display: flex;
             // justify-content: center;

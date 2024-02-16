@@ -47,10 +47,12 @@ export function MovieInfo({ type, movie }) {
     }
 
     async function addToWatchlist(ev) {
-
-        let updatedUser = { ...user, watchlist: [...user.watchlist, movie] };
+        const watchlist = Array.isArray(user.watchlist) ? user.watchlist : [];
+        let updatedUser = { ...user, watchlist: [...watchlist, movie] };
         await update(updatedUser);
     }
+
+
     async function removeFromWatchlist(ev, movieId) {
         ev.stopPropagation();
         ev.preventDefault();

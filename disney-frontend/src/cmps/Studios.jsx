@@ -60,7 +60,7 @@ export function Studios() {
     };
 
     return (
-        <div className="grid grid-cols-6 gap-2 mr-14 h-28">
+        <div className="studios-con grid gap-2">
             {studios.map((studio, index) => (
                 <Link to={`/studio/${studio.id}`} key={index} className="relative overflow-hidden rounded w-full h-full bg-white">
                     {hoveredStudioId === studio.id ? (
