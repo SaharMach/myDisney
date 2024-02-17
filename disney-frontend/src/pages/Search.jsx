@@ -12,16 +12,12 @@ export function Search() {
 
     async function handleSearch(ev) {
         ev.preventDefault();
-        console.log(searchTerm);
         const searchedMovies = await searchForMovie()
-        console.log(searchedMovies);
         setMovies(searchedMovies)
-        console.log(movies, 'from search');
     }
 
     async function searchForMovie() {
         try {
-            console.log('called api');
             const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=2ff60abfe88b7a06269cb368c24bb201&query=${searchTerm}`;
             const response = await axios.get(endpoint);
             return response.data.results;
@@ -36,7 +32,7 @@ export function Search() {
             <div className="search-con">
                 <section className="form-con w-full">
 
-                    <form className='ml-28' onSubmit={handleSearch}>
+                    <form onSubmit={handleSearch}>
                         <span class="material-symbols-outlined">
                             search
                         </span>
