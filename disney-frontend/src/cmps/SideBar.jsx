@@ -10,15 +10,13 @@ export function SideBar() {
     useEffect(() => {
         function handleResize() {
             if (window.innerWidth < 768) {
-                // This ensures the menu is closed on smaller screens
-                setToggleMenu(false);
+                setToggleMenu(false)
             }
         }
-        window.addEventListener('resize', handleResize);
-        // Initial check to apply the logic when the component mounts
-        handleResize();
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+        window.addEventListener('resize', handleResize)
+        handleResize()
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <aside className="side-bar z-10 left-px justify-center z-50" >

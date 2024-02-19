@@ -23,7 +23,6 @@ export function MoviesIndex({ movies, type, onDeleteMovie }) {
         init();
     }, [studioId, movies])
 
-
     const duos = [
         { img: disneyImg, logo: disneyLogo, id: '3166' },
         { img: pixarImg, id: '3' },
@@ -48,9 +47,10 @@ export function MoviesIndex({ movies, type, onDeleteMovie }) {
     function onSelectMovie(movie) {
         setMovie(movie)
     }
+    const moviesStyle = studioId ? 'left' : '';
     if (!moviesToShow) return <div>loading...</div>
     return (
-        <div className="movies relative w-full flex flex-col">
+        <div className={`movies relative w-full flex flex-col ${moviesStyle}`}  >
             {imgToShow &&
                 <img className="studio-img" src={imgToShow.img} alt="" />
             }

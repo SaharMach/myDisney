@@ -31,7 +31,9 @@ export function MoviesPreview({ movies, onSelectMovie }) {
 
     useEffect(() => {
         movieRefs.current = movieRefs.current.slice(0, uniqueMovies?.length);
+
     }, [uniqueMovies]);
+
 
     return (
         <div ref={containerRef} className="movies-preview flex-wrap mb-10">
@@ -40,11 +42,12 @@ export function MoviesPreview({ movies, onSelectMovie }) {
                     <div
                         className="movie-card"
                         onMouseEnter={() => {
-                            const { isTop, isLeft } = isSpecialHover(movieRefs.current[index]);
+                            if (window.innerWidth >= 768) {
+                                const { isTop, isLeft } = isSpecialHover(movieRefs.current[index]);
+                                const positionClass = `${isTop ? 'top' : ''} ${isLeft ? 'left' : ''}`.trim();
+                                movie.positionClass = positionClass;
+                            }
                             setHoveredMovieId(movie.id);
-                            const positionClass = `${isTop ? 'top' : ''} ${isLeft ? 'left' : ''}`.trim();
-                            movie.positionClass = positionClass;
-                            console.log(positionClass, 'pos class');
                         }}
                         onMouseLeave={() => setHoveredMovieId(null)}
                         onClick={() => onSelectMovie(movie)}

@@ -143,12 +143,25 @@
 }
 
 
+
 @media only screen and (min-width: 768px) {
     // .movies-list, .ml {
     //     margin-left: 112px;
     // }
+    .left {
+        margin-left: 112px;
+    }
+    
 }
 @media only screen and (max-width: 768px) {
+    .movies .logo {
+        bottom: 60%;
+    }
+    .studio-img {
+        height: 80%;
+    }
+
+    
     .movies-preview {
         display: flex;
         gap: 10px;
