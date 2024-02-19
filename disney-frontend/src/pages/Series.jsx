@@ -42,11 +42,9 @@ export function Series() {
 
             <div className="series">
                 <HomeSuggestions movies={topRatedSeries} />
-            </div>
-            <section>
-
                 <MoviesIndex movies={series} />
-            </section>
+            </div>
+
         </section>
     );
 }
