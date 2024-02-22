@@ -32,6 +32,7 @@ export function SideBar() {
                 <section className="navs flex flex-col text-slate-300" >
                     <section className='w-full'>
                         <Link to={`${user ? '/watchlist' : '/login'}`}>
+
                             <span class="material-symbols-outlined">
                                 account_circle
                             </span>

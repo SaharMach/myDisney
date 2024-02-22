@@ -110,6 +110,20 @@
                     justify-content: space-around;
                     height: 100%;
                 }
+                .navs a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px; 
+                }
+                
+                .material-symbols-outlined {
+                    min-width: 32px; 
+                    justify-content: center; 
+                }
+
+                .navs a span:not(.material-symbols-outlined) {
+                    flex-grow: 1;
+                }
                 .hide {
                     display: block;
                 }
@@ -121,7 +135,9 @@
                     gap: 10px;
                     cursor: pointer;
                     transition: transform 0.3s;
-                    font-size: 28px;
+                    font-size: 22px;
+                    height: 100%;
+
                     // color: rgb(140, 139, 139);
                     // &:hover {
                     //     transform: scale(1.1);
@@ -130,7 +146,19 @@
                     .material-symbols-outlined {
                         font-size: 32px;
                     }  
+                  
                 } 
+                a{
+                    width: 140px;
+                    &:hover {
+                        transform: scale(1.1);
+                        color: #ffff;
+                    }
+                }
+            
+                section:not(:last-child) {
+                    border-bottom: 0.5px solid lightgray;
+                }
             }
             
         }

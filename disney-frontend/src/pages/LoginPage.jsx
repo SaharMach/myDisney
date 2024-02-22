@@ -61,7 +61,7 @@ export function LoginSignup() {
     // }
 
     return (
-        <div className="login-page-container ml-24 flex justify-center">
+        <div className="login-page-container flex justify-center">
             <div className='login-page'>
                 <div className='login-page-titles'>
                     {/* <p className='logo'>Login or signup to continue</p> */}
