@@ -20,7 +20,7 @@ export function SideBar() {
 
     return (
         <aside className="side-bar z-10 left-px justify-center z-50" >
-            <Link to={'/'}>
+            <Link to={'/'} >
                 <div className='logo'>
                     <img src="https://img.hotstar.com/image/upload/v1656431462/web-images/logo-d-plus-horizontal.svg" alt="" />
                 </div>
@@ -31,8 +31,7 @@ export function SideBar() {
             <div className={`navs-con ${activeClass}`}>
                 <section className="navs flex flex-col text-slate-300" >
                     <section className='w-full'>
-                        <Link to={`${user ? '/watchlist' : '/login'}`}>
-
+                        <Link to={`${user ? '/watchlist' : '/login'}`} onClick={() => setToggleMenu(!toggleMenu)}>
                             <span class="material-symbols-outlined">
                                 account_circle
                             </span>
@@ -42,7 +41,7 @@ export function SideBar() {
                         </Link>
                     </section >
                     <section className='w-full'>
-                        <Link to={'/search'}>
+                        <Link to={'/search'} onClick={() => setToggleMenu(!toggleMenu)}>
                             <span class="material-symbols-outlined">
                                 search
                             </span>
@@ -52,7 +51,7 @@ export function SideBar() {
                         </Link>
                     </section>
                     <section className='w-full'>
-                        <Link to={'/'}>
+                        <Link to={'/'} onClick={() => setToggleMenu(!toggleMenu)}>
                             <span class="material-symbols-outlined">
                                 home
                             </span>
@@ -62,7 +61,7 @@ export function SideBar() {
                         </Link>
                     </section>
                     <section className='w-full'>
-                        <Link to={'/series'}>
+                        <Link to={'/series'} onClick={() => setToggleMenu(!toggleMenu)}>
                             <span class="material-symbols-outlined">
                                 tv_gen
                             </span>
@@ -72,7 +71,7 @@ export function SideBar() {
                         </Link>
                     </section>
                     <section className='w-full'>
-                        <Link to={'/'}>
+                        <Link to={'/'} onClick={() => setToggleMenu(!toggleMenu)}>
                             <span class="material-symbols-outlined">
                                 tv
                             </span>
